@@ -34,6 +34,12 @@ let menuItems = [
 
 function createMenu(array) {
 
+  //iterates over the menuItem array
+  array.forEach(data => {
+
+    
+  })
+
   //define new elements
   const menu = document.createElement('div');
   const listContainer = document.createElement('ul');
@@ -48,4 +54,10 @@ function createMenu(array) {
 
   //set text content
   listArray.textContent = menuItems;
+ 
+  //menuButton events
+  button.addEventListener('click', () => {
+  menu.classList.toggle('menu-open');
+})
+  return menu;
 }
