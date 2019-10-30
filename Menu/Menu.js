@@ -10,7 +10,6 @@ let menuItems = [
 ];
 
 /* 
-
   Step 1: Write a function that will create a menu component as seen below:
 
   <div class="menu">
@@ -31,5 +30,22 @@ let menuItems = [
   Step 5: return the menu component.
 
   Step 6: add the menu component to the DOM.
-  
 */
+
+function createMenu(array) {
+
+  //define new elements
+  const menu = document.createElement('div');
+  const listContainer = document.createElement('ul');
+  const listArray = document.createElement('li');
+
+  //setup structure of elements
+  menu.appendChild(listContainer);
+  listContainer.appendChild(listArray);
+
+  //set class names
+  menu.classList.add('menu');
+
+  //set text content
+  listArray.textContent = menuItems;
+}
