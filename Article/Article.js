@@ -146,4 +146,10 @@ function createArticle(title, date, firstParagraph, secondParagraph, thirdParagr
   para1.textContent = firstParagraph;
   para2.textContent = secondParagraph;
   para3.textContent = thirdParagraph;
+
+  //expandButton events
+  button.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  return article
 }
