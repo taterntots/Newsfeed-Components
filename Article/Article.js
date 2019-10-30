@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+  title: 'Dogs Just Keep Getting Cuter',
+    date: 'Feb 20th, 2019',
+    firstParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`,
+
+    secondParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`,
+
+    thirdParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`
   }
 ];
 
@@ -112,3 +121,69 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+//grab the parent element to append our data to
+const articles = document.querySelector('.articles');
+
+//loops through the data and creates an array that should make adding future articles a cinch
+// let newArray = data.map((item) => {
+//   let newArticle = createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+//   return(newArticle);
+// })
+// console.log('here is the new array', newArray);
+
+// newArray.forEach(element => {
+//   articles.appendChild(createArticle(element))
+// })
+
+data.map(artDat => {
+  articles.appendChild(createArticle(artDat.title, artDat.date, artDat.firstParagraph, artDat.secondParagraph, artDat.thirdParagraph))
+})
+
+//the super awesome function that holds our article component
+function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
+
+  //define new elements
+  const article = document.createElement('div');
+  const header2 = document.createElement('h2');
+  const day = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const button = document.createElement('span');
+  const buttonOpen = document.createElement('button');
+  const buttonClose = document.createElement('button');
+
+  //setup structure of elements
+  article.appendChild(header2);
+  article.appendChild(day);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(button);
+  // button.appendChild(buttonOpen);
+  // button.appendChild(buttonClose);
+
+  //set class names
+  article.classList.add('article');
+  day.classList.add('date');
+  para1.classList.add('content');
+  para2.classList.add('content');
+  para3.classList.add('content');
+  button.classList.add('expandButton');
+  // buttonOpen.classList.add('')
+
+  //set text content
+  header2.textContent = title;
+  day.textContent = date;
+  para1.textContent = firstParagraph;
+  para2.textContent = secondParagraph;
+  para3.textContent = thirdParagraph;
+  button.textContent = "expand";
+
+  //expandButton events
+  button.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  })
+  return article;
+}
