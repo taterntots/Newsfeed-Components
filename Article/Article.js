@@ -85,6 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+  title: 'Dogs Just Keep Getting Cuter',
+    date: 'Feb 20th, 2019',
+    firstParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`,
+
+    secondParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`,
+
+    thirdParagraph: `Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.Bork bork bork bork. Bork! Bork bork bark. Bark bark? Bork bark. bark.`
   }
 ];
 
@@ -116,11 +125,22 @@ const data = [
 //grab the parent element to append our data to
 const articles = document.querySelector('.articles');
 
-//loops through the data and creates articles as defined by our function below
-data.forEach(artData => {
-  articles.appendChild(createArticle(artData.title, artData.date, artData.firstParagraph, artData.secondParagraph, artData.thirdParagraph))
+//loops through the data and creates an array that should make adding future articles a cinch
+// let newArray = data.map((item) => {
+//   let newArticle = createArticle(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph);
+//   return(newArticle);
+// })
+// console.log('here is the new array', newArray);
+
+// newArray.forEach(element => {
+//   articles.appendChild(createArticle(element))
+// })
+
+data.map(artDat => {
+  articles.appendChild(createArticle(artDat.title, artDat.date, artDat.firstParagraph, artDat.secondParagraph, artDat.thirdParagraph))
 })
 
+//the super awesome function that holds our article component
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 
   //define new elements
