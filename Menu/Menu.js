@@ -34,9 +34,9 @@ let menuItems = [
 
 
 //grab the parent element to append our data to
-const page = document.querySelector('body');
+const menuPage = document.querySelector('.header');
 
-page.appendChild(createMenu(menuItems));
+menuPage.appendChild(createMenu(menuItems));
 
 function createMenu(array) {
   //define new elements
