@@ -113,43 +113,57 @@ const data = [
 
 */
 
+//grab the parent element to append our data to
+const articles = document.querySelector('.articles');
+
+//loops through the data and creates articles as defined by our function below
+data.forEach(artData => {
+  articles.appendChild(createArticle(artData.title, artData.date, artData.firstParagraph, artData.secondParagraph, artData.thirdParagraph))
+})
+
 function createArticle(title, date, firstParagraph, secondParagraph, thirdParagraph) {
 
   //define new elements
   const article = document.createElement('div');
   const header2 = document.createElement('h2');
-  const date = document.createElement('p');
+  const day = document.createElement('p');
   const para1 = document.createElement('p');
   const para2 = document.createElement('p');
   const para3 = document.createElement('p');
   const button = document.createElement('span');
+  const buttonOpen = document.createElement('button');
+  const buttonClose = document.createElement('button');
 
   //setup structure of elements
   article.appendChild(header2);
-  article.appendChild(date);
+  article.appendChild(day);
   article.appendChild(para1);
   article.appendChild(para2);
   article.appendChild(para3);
   article.appendChild(button);
+  // button.appendChild(buttonOpen);
+  // button.appendChild(buttonClose);
 
   //set class names
   article.classList.add('article');
-  date.classList.add('date');
-  para1.classList.add('content')
-  para2.classList.add('content')
-  para3.classList.add('content')
+  day.classList.add('date');
+  para1.classList.add('content');
+  para2.classList.add('content');
+  para3.classList.add('content');
   button.classList.add('expandButton');
+  // buttonOpen.classList.add('')
 
   //set text content
   header2.textContent = title;
-  date.textContent = date;
+  day.textContent = date;
   para1.textContent = firstParagraph;
   para2.textContent = secondParagraph;
   para3.textContent = thirdParagraph;
+  button.textContent = "expand";
 
   //expandButton events
   button.addEventListener('click', () => {
     article.classList.toggle('article-open');
   })
-  return article
+  return article;
 }
